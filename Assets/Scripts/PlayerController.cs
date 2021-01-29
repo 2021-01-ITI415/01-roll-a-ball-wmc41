@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed;
+    public float jumpforce;
     public Text countText;
     public Text winText;
 
@@ -28,6 +29,11 @@ public class PlayerController : MonoBehaviour
       Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
 
       rb.AddForce (movement * 10);
+
+      if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpforce, ForceMode.Impulse);
+        }
     }
 
     void OnTriggerEnter(Collider other)
